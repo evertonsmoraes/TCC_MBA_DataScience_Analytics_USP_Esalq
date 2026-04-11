@@ -60,7 +60,7 @@ Em especial:
 Projeto_TCC/
 │
 ├── funcoes_tcc.py         # Biblioteca central do projeto, responsável por concentrar funções reutilizáveis.
-├── 00_discovery.py        # Script de análise exploratória (discorevy) para a coleta, analise e definição dos indicadores a serem utilizados no projeto.
+├── 00_discovery.py        # Script de análise exploratória (discovery) para a coleta, analise e definição dos indicadores a serem utilizados no projeto.
 ├── 01_desenvolvimento.py  # Script com todas as etapads do projeto desde a coleta de dados aos resultados
 ├── arquivos/                   
 │   ├── entrada/            # Arquivos de entrada (lista de municipios brasileiros, indicadores selecionados ,etc)

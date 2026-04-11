@@ -1,0 +1,3 @@
+﻿PERIODO;ID_PESQUISA;PESQUISA_NOME;ID_AGREGADO;AGREGADO_NOME;AGREG_ASSUNTO;AGREG_URL;ID_VARIAVEL;NIVEL;IDS_CLASSIFICACOES
+2022;CD;Censo Demográfico;10050;Domicílios em setores censitários selecionados para a Pesquisa Urbanística do Entorno dos Domicílios, por características do entorno dos domicílios, segundo as classes de hierarquia de urbana;Características do domicílio;https://sidra.ibge.gov.br/tabela/10050;1009611;N6;14[all] | 2075[all]
+2022;CD;Censo Demográfico;10056;Taxa bruta de frequência escolar, segundo os grupos de idade, o sexo e a cor ou raça;Educação;https://sidra.ibge.gov.br/tabela/10056;3795;N6;2[6794] | 58[95253] | 86[95251]

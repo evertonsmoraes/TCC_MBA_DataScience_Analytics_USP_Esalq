@@ -1,0 +1,39 @@
+﻿PERIODO;ID_PESQUISA;PESQUISA_NOME;ID_AGREGADO;AGREGADO_NOME;AGREG_ASSUNTO;AGREG_URL;ID_VARIAVEL;NIVEL;IDS_CLASSIFICACOES
+2022;CD;Censo Demográfico;4714;População Residente, Área territorial e Densidade demográfica;Território;https://sidra.ibge.gov.br/tabela/4714;93;N6;
+2022;CD;Censo Demográfico;4714;População Residente, Área territorial e Densidade demográfica;Território;https://sidra.ibge.gov.br/tabela/4714;614;N6;
+2022;CD;Censo Demográfico;4714;População Residente, Área territorial e Densidade demográfica;Território;https://sidra.ibge.gov.br/tabela/4714;6318;N6;
+2022;CD;Censo Demográfico;6805;Domicílios particulares permanentes ocupados, por tipo de esgotamento sanitário;Características do domicílio;https://sidra.ibge.gov.br/tabela/6805;1000381;N6;11558[46290]
+2022;CD;Censo Demográfico;6892;Domicílios particulares permanentes ocupados, por destino do lixo;Características do domicílio;https://sidra.ibge.gov.br/tabela/6892;1000381;N6;67[2520]
+2022;CD;Censo Demográfico;9515;Índice de envelhecimento, idade mediana e razão de sexo da população;Pessoas;https://sidra.ibge.gov.br/tabela/9515;10612;N6;
+2022;CD;Censo Demográfico;9606;População residente, por cor ou raça, segundo o sexo e a idade;Cor ou raça;https://sidra.ibge.gov.br/tabela/9606;93;N6;287[all]
+2022;CD;Censo Demográfico;9606;População residente, por cor ou raça, segundo o sexo e a idade;Cor ou raça;https://sidra.ibge.gov.br/tabela/9606;1000093;N6;2[all] 
+2022;CD;Censo Demográfico;9756;Índice de envelhecimento, idade mediana e razão de sexo, por cor ou raça;Cor ou raça;https://sidra.ibge.gov.br/tabela/9756;9175;N6;86[95251]
+2022;CD;Censo Demográfico;9756;Índice de envelhecimento, idade mediana e razão de sexo, por cor ou raça;Cor ou raça;https://sidra.ibge.gov.br/tabela/9756;10613;N6;86[95251]
+2022;CD;Censo Demográfico;9888;População residente, Área territorial e Densidade demográfica em favelas e comunidades urbanas, segundo as Favelas e Comunidades Urbanas;Território;https://sidra.ibge.gov.br/tabela/9888;9612;N6;
+2022;CD;Censo Demográfico;9888;População residente, Área territorial e Densidade demográfica em favelas e comunidades urbanas, segundo as Favelas e Comunidades Urbanas;Território;https://sidra.ibge.gov.br/tabela/9888;9911;N6;
+2022;CD;Censo Demográfico;9888;População residente, Área territorial e Densidade demográfica em favelas e comunidades urbanas, segundo as Favelas e Comunidades Urbanas;Território;https://sidra.ibge.gov.br/tabela/9888;13096;N6;
+2022;CD;Censo Demográfico;9936;Domicílios particulares permanentes ocupados, por existência de conexão domiciliar à Internet, condição de ocupação do domicílio e tipo do domicílio;Características do domicílio;https://sidra.ibge.gov.br/tabela/9936;1000381;N6;2072[77585]
+2022;CD;Censo Demográfico;10062;Número médio de anos de estudo das pessoas com 11 anos ou mais de idade, segundo os grupos de idade, o sexo e a cor ou raça;Educação;https://sidra.ibge.gov.br/tabela/10062;13285;N6;58[108866] 
+2022;CD;Censo Demográfico;10089;População residente, total e quilombola, por sexo e grupos de idade, segundo localização e situação do domicílio;População quilombola;https://sidra.ibge.gov.br/tabela/10089;1000093;N6;1[all]
+2022;CD;Censo Demográfico;10135;Taxa de analfabetismo das pessoas de 15 anos ou mais de idade por grupo de idade, cor ou raça, sexo e existência de deficiência;Educação;https://sidra.ibge.gov.br/tabela/10135;10267;N6;
+2022;CD;Censo Demográfico;10150;Taxa de escolarização das pessoas de 6 anos ou mais de idade, total e pessoas diagnosticadas com autismo, por sexo e grupo de idade;Educação;https://sidra.ibge.gov.br/tabela/10150;12805;N6;58[all]
+2022;CL;Cadastro Central de Empresas;9509;Unidades locais, empresas e outras organizações atuantes, pessoal ocupado total, pessoal ocupado assalariado, pessoal assalariado médio, salários e outras remunerações e salário médio mensal;Unidades locais;https://sidra.ibge.gov.br/tabela/9509;1606;N6;
+2022;CL;Cadastro Central de Empresas;9509;Unidades locais, empresas e outras organizações atuantes, pessoal ocupado total, pessoal ocupado assalariado, pessoal assalariado médio, salários e outras remunerações e salário médio mensal;Unidades locais;https://sidra.ibge.gov.br/tabela/9509;707;N6;
+2022;CL;Cadastro Central de Empresas;9509;Unidades locais, empresas e outras organizações atuantes, pessoal ocupado total, pessoal ocupado assalariado, pessoal assalariado médio, salários e outras remunerações e salário médio mensal;Unidades locais;https://sidra.ibge.gov.br/tabela/9509;708;N6;
+2022;CL;Cadastro Central de Empresas;9509;Unidades locais, empresas e outras organizações atuantes, pessoal ocupado total, pessoal ocupado assalariado, pessoal assalariado médio, salários e outras remunerações e salário médio mensal;Unidades locais;https://sidra.ibge.gov.br/tabela/9509;1606;N6;
+2022;CL;Cadastro Central de Empresas;9509;Unidades locais, empresas e outras organizações atuantes, pessoal ocupado total, pessoal ocupado assalariado, pessoal assalariado médio, salários e outras remunerações e salário médio mensal;Unidades locais;https://sidra.ibge.gov.br/tabela/9509;10143;N6;
+2022;CL;Cadastro Central de Empresas;9528;Unidades locais, pessoal ocupado total e assalariado, salários e outras remunerações, por seção, divisão, grupo e classe da classificação de atividades (CNAE 2.0);Unidades locais;https://sidra.ibge.gov.br/tabela/9528;707;N6;12762[117897]
+2022;RC;Pesquisa Estatísticas do Registro Civil;2609;Nascidos vivos, por ano de nascimento, grupos de idade da mãe na ocasião do parto, sexo e lugar de residência da mãe;Nascidos vivos;https://sidra.ibge.gov.br/tabela/2609;217;N6;232[71500]
+2022;RC;Pesquisa Estatísticas do Registro Civil;2681;Óbitos, ocorridos no ano, por mês de ocorrência, natureza do óbito, sexo, idade, local de ocorrência e lugar do registro;Óbitos;https://sidra.ibge.gov.br/tabela/2681;343;N6;260[5922]
+2022;CD;Censo Demográfico;10051;Estabelecimentos de saúde, ensino e outras finalidades, em setores selecionados para a Pesquisa Urbanística do Entorno dos Domicílios, por existência e características do entorno;Unidades;https://sidra.ibge.gov.br/tabela/10051;13324;N6;3[491]|14[200]
+2022;CD;Censo Demográfico;10064;Pessoas com nível superior completo, por áreas gerais, específicas e detalhadas de formação do curso graduação concluído, segundo os grupos de idade;Educação;https://sidra.ibge.gov.br/tabela/10064;1920;N6;2082[78032]
+2022;CD;Censo Demográfico;10056;Taxa bruta de frequência escolar, segundo os grupos de idade, o sexo e a cor ou raça;Educação;https://sidra.ibge.gov.br/tabela/10056;3795;N6;58[95253]|2[6794]|86[95251]
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;
+;;;;;;;;;

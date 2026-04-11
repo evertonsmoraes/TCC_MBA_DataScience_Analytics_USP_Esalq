@@ -1,7 +1,15 @@
 # -*- coding: utf-8 -*-
 
 """
-crm_funcoes_basicas
+Created on 2025-09-19 20:04
+Last Updated on 2026-04-11 11:35
+
+@author: Everton S. Moraes
+Autor: Everton S. Moraes
+Versão: 0.0.1
+
+Projeto: Clusterização de Municípios Brasileiros com Base em Indicadores Socioeconômicos Públicos
+GitHub: https://github.com/evertonsmoraes/TCC_MBA_DataScience_Analytics_USP_Esalq
 
 Descrição:
 Biblioteca com funções para o TCC de Data Sciense e Analytics para suporte a coleta, tratamento, análise e visualização
@@ -16,15 +24,13 @@ centralizando funções comuns de:
 - Visualização de dados
 - Clusterização e métricas de avaliação
 
-Autor: Everton Moraes
-Versão: 0.0.1
 """
 
 
 # Detalhes da Biblioteca
 __name__= "funcoes_tcc" 
 __version__ = '0.0.1' 
-__author__ = "Everton Moraes"
+__author__ = "Everton S. Moraes"
 __email__  = "evertondasilvamoraes@gmail.com.br"
 __description__ = ("""Biblioteca Python desenvolvida como parte do TCC de Data Science e Analytics,
  com foco em análise, clusterização e visualização de dados socioeconômicos do IBGE""")
@@ -46,8 +52,8 @@ O projeto foi desenvolvido com foco acadêmico, buscando boas práticas
 de engenharia de dados e ciência de dados, permitindo reutilização em outros contextos.
 """
 __license__ = "MIT"
-__url__ = "https://github.com/seu-usuario/funcoes_tcc"
-__download_url__ = "https://github.com/seu-usuario/funcoes_tcc/archive/refs/heads/main.zip"
+__url__ = "https://github.com/evertonsmoraes/TCC_MBA_DataScience_Analytics_USP_Esalq"
+__download_url__ = "https://github.com/evertonsmoraes/TCC_MBA_DataScience_Analytics_USP_Esalq/blob/main/funcoes_tcc.py"
 __install_requires__ = [
     "requests>=2.28.0",
     "pandas>=1.5.0",

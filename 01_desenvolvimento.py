@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 """
 Created on 2025-09-19 20:04
-Last Updated on 2026-04-11 11:15
+Last Updated on 2026-04-11 11:25
 
-@author: evert
+@author: Everton S. Moraes
+Autor: Everton S. Moraes
+Versão: 0.0.1
 
 Projeto: Clusterização de Municípios Brasileiros com Base em Indicadores Socioeconômicos Públicos
+GitHub: https://github.com/evertonsmoraes/TCC_MBA_DataScience_Analytics_USP_Esalq
 
 Módulo: Tratamento e Consolidação de Indicadores Municipais
 

@@ -4,15 +4,14 @@
 Created on 2025-08-29 17:10
 Last Updated on 2026-04-11 11:15
 
-@author: Everton Moraes
-
-Autor: Everton Moraes
-Data de criação: 29/08/2025
-Última atualização: [preencher se necessário]
-Versão: 1.0
-
+@author: Everton S. Moraes
+Autor: Everton S. Moraes
+Versão: 0.0.1
 
 Projeto: Clusterização de Municípios Brasileiros com Base em Indicadores Socioeconômicos Públicos
+GitHub: https://github.com/evertonsmoraes/TCC_MBA_DataScience_Analytics_USP_Esalq
+
+Módulo: Análise explorátoria para a coleta, tratamento e estruturação de dados
 
 Descrição:
 Este script tem como objetivo realizar a coleta, tratamento e estruturação de dados

@@ -89,6 +89,7 @@ from pathlib import Path
 diretorio = Path(__file__).resolve().parent # diretorio deste arquivo .py
 diretorio_arquivos =  str(diretorio / "arquivos")
 diretorio_imagens =  str(diretorio / "imgs")
+diretorio_imagens = 'C:\TCC\imgs'
 
 #%% OBTEM OS INDICADORES
 
@@ -351,7 +352,7 @@ mapa_abreviacoes_grupos = {
     ,"População": 'popul'
     ,"Educação": 'educ'
     ,"Saúde": 'saud'
-    ,"Economia": 'ecom'
+    ,"Economia": 'econ'
     ,"Infraestrutura": 'infra'
    
 }
@@ -1356,7 +1357,7 @@ for variavel in df_biblioteca.itertuples(index=False):
 
 
 
-#%% NORMALIZA VARIAVEIS
+#%% PADRONIZA VARIAVEIS
 
 # Configura para que o pandad exiba todas as colunas e linhas completas
 pd.set_option('display.max_columns', None)  # Mostra todas as colunas
@@ -1382,72 +1383,72 @@ df_variaveis = df_variaveis.drop(columns=colunas_deconsiderar).copy()
 colunas_deconsiderar = df_variaveis.filter(regex=r'.*_.+_.*').columns.tolist()
 df_variaveis = df_variaveis.drop(columns=colunas_deconsiderar).copy()
 
-print('Análise Descritiva antes da normalização')
+print('Análise Descritiva antes da padronização')
 print(df_variaveis.describe().T[['count', 'mean', 'std', 'min', 'max']].round(2))
 print('\nValores ausentes por coluna:')
 print(df_variaveis.isna().sum())
 
-# Pipeline: (1) imputação da medianda (2) normalização 
+# Pipeline: (1) imputação da medianda (2) padronização 
 pipeline = Pipeline([
     ('imputer', SimpleImputer(strategy='median')),  # trata valores NaN
     ('scaler', StandardScaler())                    # Z-Score: média = 0, desvio = 1
 ])
 
 
-# Executa pipeline e normaliza os dados
-variaveis_normalizadas = pipeline.fit_transform(df_variaveis)
+# Executa pipeline e padronização os dados
+variaveis_padronizadas = pipeline.fit_transform(df_variaveis)
 
-# Gera DataFrame com as variaveis normalizadas
-df_variaveis_normalizadas = pd.DataFrame(variaveis_normalizadas, columns=df_variaveis.columns, index=df_variaveis.index)
-fnc_tcc.exportar_dataframe_csv (df_variaveis_normalizadas,diretorio_arquivos+"/rotina","df_variaveis_normalizadas.csv")  
+# Gera DataFrame com as variaveis padronizadas
+df_variaveis_padronizadas = pd.DataFrame(variaveis_padronizadas, columns=df_variaveis.columns, index=df_variaveis.index)
+fnc_tcc.exportar_dataframe_csv (df_variaveis_padronizadas,diretorio_arquivos+"/rotina","df_variaveis_padronizadas.csv")  
 
-print('\n Análise Descritiva após normalização')
-print(df_variaveis_normalizadas.describe().T[['count', 'mean', 'std', 'min', 'max']].round(2))
-print('\nValores ausentes por coluna após normalização:')
-print(df_variaveis_normalizadas.isna().sum())
+print('\n Análise Descritiva após padronização')
+print(df_variaveis_padronizadas.describe().T[['count', 'mean', 'std', 'min', 'max']].round(2))
+print('\nValores ausentes por coluna após padronização')
+print(df_variaveis_padronizadas.isna().sum())
 
 # Reseta as configuracoes do pandas
 pd.reset_option('all')
 
 # Gera DataFrame Consolidado que irá consolidar todos os detalhes
-df_consolidado_variaveis = pd.concat([df_variaveis_municipios, df_variaveis_normalizadas.add_suffix('_NORM')], axis=1)
+df_consolidado_variaveis = pd.concat([df_variaveis_municipios, df_variaveis_padronizadas.add_suffix('_PADR')], axis=1)
 fnc_tcc.exportar_dataframe_csv (df_consolidado_variaveis,diretorio_arquivos+"/rotina","df_consolidado_variaveis.csv")  
 
 # Exporta as analises descrivas
 fnc_tcc.exportar_dataframe_csv (pd.DataFrame(df_variaveis_municipios.describe().T),diretorio_arquivos+"/rotina","describe_df_variaveis_municipios.csv",True)  
-fnc_tcc.exportar_dataframe_csv (pd.DataFrame(df_variaveis_normalizadas.describe().T),diretorio_arquivos+"/rotina","describe_df_variaveis_normalizadas.csv",True)  
+fnc_tcc.exportar_dataframe_csv (pd.DataFrame(df_variaveis_padronizadas.describe().T),diretorio_arquivos+"/rotina","describe_df_variaveis_padronizadas.csv",True)  
 fnc_tcc.exportar_dataframe_csv (pd.DataFrame(df_consolidado_variaveis.describe().T),diretorio_arquivos+"/rotina","describe_df_consolidado_variaveis.csv",True)  
 
 
 # Gerar Boxplot das variaveis normalizadas
 fnc_tcc.gerar_boxplot(
-                        df_variaveis_normalizadas
+                        df_variaveis_padronizadas
                          #,colunas_filtrar=
                          ,rotacao_x=90
-                         ,titulo='Boxplot de todas as variáveis normalizadas'
-                         ,arquivo_saida=diretorio_imagens+"/bloxpot_variaveis_normalizadas.png"
+                         ,titulo='Boxplot de todas as variáveis padronizadas'
+                         ,arquivo_saida=diretorio_imagens+"/bloxpot_variaveis_padronizadas.png"
                          ,figsize=(9, 4)
                          )
 
 # Gera Histrograma de preenchimento das variaveis normalizadas
-qtde_preenchidos = df_variaveis_normalizadas.notna().sum()
+qtde_preenchidos = df_variaveis_padronizadas.notna().sum()
 
 fnc_tcc.gerar_histograma(qtde_preenchidos
                 ,titulo='Distribuição da quantidade de registros preenchidos por variável'
-                ,titulo_x='Variáveis Normalizadas'
+                ,titulo_x='Variáveis Padronizadas'
                 ,titulo_y='Quantidade de registros preenchidos'
-                ,arquivo_saida = diretorio_imagens+"/histograma_variaveis_normalizadas.png"
+                ,arquivo_saida = diretorio_imagens+"/histograma_variaveis_padronizadas.png"
                 )
 
 #%%  ANALISE DE CORRELACAO DE PEARSON DE TODAS VARIAVEIS - VARIAVEIS NORMALIZADAS
 
-# Se não localizar o df_variaveis_normalizadas, realiza importação do backup gerado em arquivo
-if not fnc_tcc.consultar_existencia_objeto('df_variaveis_normalizadas', globals()):
-    fnc_tcc.log("DataFrame df_variaveis_normalizadas não existente, iniciando importação do backup")
-    chek_arq, df_variaveis_normalizadas = fnc_tcc.verificar_importar_arquivo_csv(diretorio_arquivos+"/rotina","df_variaveis_normalizadas.csv",True,True)
+# Se não localizar o df_variaveis_padronizadas, realiza importação do backup gerado em arquivo
+if not fnc_tcc.consultar_existencia_objeto('df_variaveis_padronizadas', globals()):
+    fnc_tcc.log("DataFrame df_variaveis_padronizadas não existente, iniciando importação do backup")
+    chek_arq, df_variaveis_padronizadas = fnc_tcc.verificar_importar_arquivo_csv(diretorio_arquivos+"/rotina","df_variaveis_padronizadas.csv",True,True)
 
 # Exibe Correlacao de Pearson
-print(pg.rcorr(df_variaveis_normalizadas
+print(pg.rcorr(df_variaveis_padronizadas
          ,method = 'pearson'
          ,upper='pval'
          ,decimals = 3
@@ -1459,7 +1460,7 @@ print(pg.rcorr(df_variaveis_normalizadas
 caminho_corr = diretorio_imagens+"/"+"todas_var_matriz_correlacao.png"
 
 # Gerando Correlação para Gerar o gráfico
-corr_geral = df_variaveis_normalizadas.corr()
+corr_geral = df_variaveis_padronizadas.corr()
 
 # Plotando em um gráfico heatmap    
 plt.figure(figsize=(20, 18), dpi=600)
@@ -1499,10 +1500,10 @@ if not fnc_tcc.consultar_existencia_objeto('df_consolidado_variaveis', globals()
     chek_arq, df_consolidado_variaveis = fnc_tcc.verificar_importar_arquivo_csv(diretorio_arquivos+"/rotina","df_consolidado_variaveis.csv",True,True)
 
 
-# Se não localizar o df_variaveis_normalizadas, realiza importação do backup gerado em arquivo
-if not fnc_tcc.consultar_existencia_objeto('df_variaveis_normalizadas', globals()):
-    fnc_tcc.log("DataFrame df_variaveis_normalizadas não existente, iniciando importação do backup")
-    chek_arq, df_variaveis_normalizadas = fnc_tcc.verificar_importar_arquivo_csv(diretorio_arquivos+"/rotina","df_variaveis_normalizadas.csv",True,True)
+# Se não localizar o df_variaveis_padronizadas, realiza importação do backup gerado em arquivo
+if not fnc_tcc.consultar_existencia_objeto('df_variaveis_padronizadas', globals()):
+    fnc_tcc.log("DataFrame df_variaveis_padronizadas não existente, iniciando importação do backup")
+    chek_arq, df_variaveis_padronizadas = fnc_tcc.verificar_importar_arquivo_csv(diretorio_arquivos+"/rotina","df_variaveis_padronizadas.csv",True,True)
 
 
 # Obtem os grupos de indicadores
@@ -1537,16 +1538,16 @@ for nome_grupo_atual in grupos_validos:
     # Nome do Grupo tratado para utilizar nos DataFrames
     nome_grupo_trat = fnc_tcc.tratar_nome_arquivo(nome_grupo_atual)
     
-    # Seleciona os indicadores normalizados do grupo atual
-    fnc_tcc.log(f"Obtendo os indicadores normalizados de '{nome_grupo_atual}'")
+    # Seleciona os indicadores padronizados do grupo atual
+    fnc_tcc.log(f"Obtendo os indicadores padronizados de '{nome_grupo_atual}'")
     df_indicadores_grupo_atual = df_biblioteca[df_biblioteca['GRUPO_INDICADOR'] == nome_grupo_atual]
     
-    # Obtem as colunas/indicadores Normalizados
+    # Obtem as colunas/indicadores padronizados
     colunas = df_indicadores_grupo_atual['REFERENCIA_INDICADOR'].tolist()
-    colunas_norm = [col + "_NORM" for col in colunas]
+    colunas_padronizadas = [col + "_PADR" for col in colunas]
     
     # Cria DataFrame para analise de correlacao
-    df_tempo_corr = df_consolidado_variaveis[colunas_norm].copy()
+    df_tempo_corr = df_consolidado_variaveis[colunas_padronizadas].copy()
     
     # Exibe Correlacao de Pearson
     print(pg.rcorr(df_tempo_corr
@@ -1644,10 +1645,10 @@ if not fnc_tcc.consultar_existencia_objeto('df_consolidado_variaveis', globals()
     fnc_tcc.log("DataFrame df_consolidado_variaveis não existente, iniciando importação do backup")
     chek_arq, df_consolidado_variaveis = fnc_tcc.verificar_importar_arquivo_csv(diretorio_arquivos+"/rotina","df_consolidado_variaveis.csv",True,True)
 
-# Se não localizar o df_variaveis_normalizadas, realiza importação do backup gerado em arquivo
-if not fnc_tcc.consultar_existencia_objeto('df_variaveis_normalizadas', globals()):
-    fnc_tcc.log("DataFrame df_variaveis_normalizadas não existente, iniciando importação do backup")
-    chek_arq, df_variaveis_normalizadas = fnc_tcc.verificar_importar_arquivo_csv(diretorio_arquivos+"/rotina","df_variaveis_normalizadas.csv",True,True)
+# Se não localizar o df_variaveis_padronizadas, realiza importação do backup gerado em arquivo
+if not fnc_tcc.consultar_existencia_objeto('df_variaveis_padronizadas', globals()):
+    fnc_tcc.log("DataFrame df_variaveis_padronizadas não existente, iniciando importação do backup")
+    chek_arq, df_variaveis_padronizadas = fnc_tcc.verificar_importar_arquivo_csv(diretorio_arquivos+"/rotina","df_variaveis_padronizadas.csv",True,True)
 
 
 ## Parametros
@@ -1696,23 +1697,23 @@ for nome_grupo_atual in grupos_validos:
     # Nome do Grupo tratado para utilizar nos DataFrames
     nome_grupo_trat = fnc_tcc.tratar_nome_arquivo(nome_grupo_atual)
     
-    # Seleciona os indicadores normalizados do grupo atual
-    fnc_tcc.log(f"Obtendo os indicadores normalizados de '{nome_grupo_atual}'")
+    # Seleciona os indicadores padronizados do grupo atual
+    fnc_tcc.log(f"Obtendo os indicadores padronizados de '{nome_grupo_atual}'")
     df_indicadores_grupo_atual = df_biblioteca[df_biblioteca['GRUPO_INDICADOR'] == nome_grupo_atual]
     
     # Obtem as colunas/indicadores - retirando as que deverão ser desconsideradas
     colunas = df_indicadores_grupo_atual['REFERENCIA_INDICADOR'].tolist()
-    colunas_norm = [col + "_NORM" 
+    colunas_padronizadas = [col + "_PADR" 
                     for col in colunas 
-                    if (col in df_variaveis_normalizadas.columns
+                    if (col in df_variaveis_padronizadas.columns
                         and col not in colunas_redundantes
                         )
                     ]
     
     # Cria DataFrame  com as variaveis normalizadas do grupo atual
     nome_df_var = 'df_indicadores_'+abrev_atual
-    dict_indicadores_por_grupo[nome_df_var] = df_consolidado_variaveis[colunas_norm].copy()
-    fnc_tcc.log(f"Criado o '{nome_df_var}' criado com {len(colunas_norm)} colunas")
+    dict_indicadores_por_grupo[nome_df_var] = df_consolidado_variaveis[colunas_padronizadas].copy()
+    fnc_tcc.log(f"Criado o '{nome_df_var}' criado com {len(colunas_padronizadas)} colunas")
        
     # Executar Clusterizacao
     fnc_tcc.log(f"Executando Clusterização do '{nome_grupo_atual}'")
@@ -1749,24 +1750,24 @@ for nome_grupo_atual in grupos_validos:
                     )
 
     
-    # Gerar Boxplot das variaveis - Normalizado
+    # Gerar Boxplot das variaveis - Padronizado
     fnc_tcc.gerar_boxplot(
-                            df_consolidado_variaveis[colunas_norm]
+                            df_consolidado_variaveis[colunas_padronizadas]
                              #,colunas_filtrar=colunas
                              ,rotacao_x=90
                              ,titulo='Boxplot das varíaveis do Grupo Indicador '+nome_grupo_atual
-                             ,arquivo_saida= diretorio_imagens +'/'+ abrev_atual +"_bloxpot_normalizado.png"
+                             ,arquivo_saida= diretorio_imagens +'/'+ abrev_atual +"_bloxpot_padronizado.png"
                              ,figsize=(9, 4)
                              )
     
-    # Gera Histrograma de preenchimento das variaveis - Não normalizado
-    qtde_preenchidos = df_consolidado_variaveis[colunas_norm].notna().sum()
+    # Gera Histrograma de preenchimento das variaveis - Não padronizados
+    qtde_preenchidos = df_consolidado_variaveis[colunas_padronizadas].notna().sum()
     
     fnc_tcc.gerar_histograma(qtde_preenchidos
-                    ,titulo='Distribuição da quantidade de registros preenchidos por variável normalizada do Grupo Indicador '+nome_grupo_atual
-                    ,titulo_x='Variáveis Normalizadas'
+                    ,titulo='Distribuição da quantidade de registros preenchidos por variável padronizada do Grupo Indicador '+nome_grupo_atual
+                    ,titulo_x='Variáveis Pardonizadas'
                     ,titulo_y='Quantidade de registros preenchidos'
-                    ,arquivo_saida = diretorio_imagens+'/'+ abrev_atual +"_histograma_normalizado.png"
+                    ,arquivo_saida = diretorio_imagens+'/'+ abrev_atual +"_histograma_padronizado.png"
                     )
 
 # Configura para que o pandad exiba todas as colunas e linhas completas
@@ -1809,10 +1810,10 @@ if not fnc_tcc.consultar_existencia_objeto('df_consolidado_variaveis', globals()
     fnc_tcc.log("DataFrame df_consolidado_variaveis não existente, iniciando importação do backup")
     chek_arq, df_consolidado_variaveis = fnc_tcc.verificar_importar_arquivo_csv(diretorio_arquivos+"/rotina","df_consolidado_variaveis.csv",True,True)
 
-# Se não localizar o df_variaveis_normalizadas, realiza importação do backup gerado em arquivo
-if not fnc_tcc.consultar_existencia_objeto('df_variaveis_normalizadas', globals()):
-    fnc_tcc.log("DataFrame df_variaveis_normalizadas não existente, iniciando importação do backup")
-    chek_arq, df_variaveis_normalizadas = fnc_tcc.verificar_importar_arquivo_csv(diretorio_arquivos+"/rotina","df_variaveis_normalizadas.csv",True,True)
+# Se não localizar o df_variaveis_padronizadas, realiza importação do backup gerado em arquivo
+if not fnc_tcc.consultar_existencia_objeto('df_variaveis_padronizadas', globals()):
+    fnc_tcc.log("DataFrame df_variaveis_padronizadas não existente, iniciando importação do backup")
+    chek_arq, df_variaveis_padronizadas = fnc_tcc.verificar_importar_arquivo_csv(diretorio_arquivos+"/rotina","df_variaveis_padronizadas.csv",True,True)
 
 
 ## Parametros
@@ -1854,8 +1855,8 @@ for nome_grupo_atual in grupos_validos:
     # Nome do Grupo tratado para utilizar nos DataFrames
     nome_grupo_trat = fnc_tcc.tratar_nome_arquivo(nome_grupo_atual)
     
-    # Seleciona os indicadores normalizados do grupo atual
-    fnc_tcc.log(f"Obtendo os indicadores normalizados de '{nome_grupo_atual}'")
+    # Seleciona os indicadores padronizados do grupo atual
+    fnc_tcc.log(f"Obtendo os indicadores padronizados de '{nome_grupo_atual}'")
     df_indicadores_grupo_atual = df_biblioteca[df_biblioteca['GRUPO_INDICADOR'] == nome_grupo_atual]
     
     # Obtem as colunas/indicadores - retirando as que deverão ser desconsideradas
@@ -1941,14 +1942,14 @@ for nome_grupo_atual in grupos_validos:
     fnc_tcc.gerar_grafico_metricas_unico(df_metricas_grupo_atual_norm[['k','Razao_Variancia', 'BIC','Silhouette_Score','Indice_Jaccard','Score']]
                                  , inicio_titulo = "Clusters "+nome_grupo_atual
                                  , caminho_destino = diretorio_imagens+'/'+ abrev_atual +'_metricas_norm_unicas.png'
-                                 , normalizar = False
+                                 , padronizar = False
                                  , melhor_k = None)
     
     # Gera Grafico unico com as metricas normalizadas utilizadas no Score e o Score indicando o melhor k
     fnc_tcc.gerar_grafico_metricas_unico(df_metricas_grupo_atual_norm[['k','Razao_Variancia', 'BIC','Silhouette_Score','Indice_Jaccard','Score']]
                                  , inicio_titulo = "Clusters "+nome_grupo_atual
                                  , caminho_destino = diretorio_imagens+'/'+ abrev_atual +'_metricas_norm_unicas_melhor_k.png'
-                                 , normalizar = False
+                                 , padronizar = False
                                  , melhor_k = melhor_k_grupo)
     
 	# Gera o mapa de calor das metricas
@@ -2044,7 +2045,7 @@ fnc_tcc.gerar_mosaico(graficos_gerados_ordenados
 fnc_tcc.gerar_grafico_metricas_unico(df_metricas_final_norm[['k','Razao_Variancia', 'BIC','Silhouette_Score','Indice_Jaccard','Score']]
                              , inicio_titulo = "Clusters "+nome_grupo_atual
                              , caminho_destino = diretorio_imagens+'/'+ abrev_atual +'_metricas_norm_unicas.png'
-                             , normalizar = False
+                             , padronizar = False
                              , melhor_k = None)
 
 
@@ -2052,8 +2053,7 @@ fnc_tcc.gerar_grafico_metricas_unico(df_metricas_final_norm[['k','Razao_Varianci
 fnc_tcc.gerar_grafico_metricas_unico(df_metricas_final_norm[['k','Razao_Variancia', 'BIC','Silhouette_Score','Indice_Jaccard','Score']]
                              , inicio_titulo = "Clusters "+nome_grupo_atual
                              , caminho_destino = diretorio_imagens+'/'+ abrev_atual +'_metricas_norm_unicas_melhor_k.png'
-                             , normalizar = False
-    
+                             , padronizar = False
                              , melhor_k = melhor_k_final)
 # Gera o mapa de calor
 df_metricas_final_mapa_atual = df_metricas_final.drop(columns=['Inercia'], errors='ignore').copy()
@@ -2104,7 +2104,7 @@ pd.reset_option('all')
 
 """
 df_variaveis_municipios # variaveis originais
-df_variaveis_normalizadas # variaveis normalizadas
+df_variaveis_padronizadas # variaveis normalizadas
 df_consolidado_variaveis_clusters # variaveis originais + normalizadas + clusters (geral,popul,educ,saude,)
 
 colunas = df_consolidado_variaveis_clusters. columns

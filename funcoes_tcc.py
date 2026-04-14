@@ -849,7 +849,7 @@ def gerar_mapacalor_indicadores (df_indicadores,titulo,caminho_completo_arquivo,
     else:
         linhas_destaque = []
         
-    # Normaliza apenas as métricas (colunas 1 em diante) 
+    # Normaliza apenas as métricas (colunas 1 em diante) a utilizar como referencia para as cores
     df_norm = df_valores.copy()
     for col in df_norm.columns[1:]:
         min_val = df_norm[col].min()
@@ -1284,7 +1284,7 @@ def gerar_grafico_metricas(df_metricas, inicio_titulo = None, prefixo_arquivo=No
 
 
 
-def gerar_grafico_metricas_unico(df_metricas, inicio_titulo=None, caminho_destino=None, normalizar=True, melhor_k=None):
+def gerar_grafico_metricas_unico(df_metricas, inicio_titulo=None, caminho_destino=None, padronizar=True, melhor_k=None):
     """
     Gera um único gráfico contendo todas as métricas de avaliação
     em função do número de clusters (k).
@@ -1293,7 +1293,7 @@ def gerar_grafico_metricas_unico(df_metricas, inicio_titulo=None, caminho_destin
         df_metricas (pd.DataFrame): DataFrame onde a primeira coluna é o eixo X (ex: k) e as demais são métricas numéricas.
         inicio_titulo (str, opcional): Texto inicial do título do gráfico.
         caminho_destino (str, opcional): Caminho completo do arquivo para salvar o gráfico.
-        normalizar (bool, opcional): Se True, aplica padronização (Z-score) às métricas.
+        padronizar (bool, opcional): Se True, aplica padronização (Z-score) às métricas.
                                      Default = True.
         melhor_k (int, opcional): Valor de k considerado ótimo, destacado no gráfico.
     """
@@ -1305,9 +1305,9 @@ def gerar_grafico_metricas_unico(df_metricas, inicio_titulo=None, caminho_destin
     # Copia para evitar efeitos colaterais
     df_plot = df_metricas.copy()
 
-    # Normalização das métricas (recomendado)
-    if normalizar:
-        scaler = StandardScaler()
+    # Padronização das métricas (recomendado)
+    if padronizar:
+        scaler = StandardScaler() # Z-Score: média = 0, desvio = 1
         df_plot[metricas] = scaler.fit_transform(df_plot[metricas])
 
     # Estilos visuais
@@ -1355,7 +1355,7 @@ def gerar_grafico_metricas_unico(df_metricas, inicio_titulo=None, caminho_destin
         )
         
     plt.xlabel(col_k)
-    plt.ylabel("Métricas (normalizadas)" if normalizar else "Valor da métrica")
+    plt.ylabel("Métricas (padronizadas)" if padronizar else "Valor da métrica")
 
     if inicio_titulo:
         plt.title(f"{inicio_titulo} | Métricas vs {col_k}")
@@ -1391,8 +1391,7 @@ def identificar_melhor_k(df_metricas):
     # Determina as metricas a utilizar no score
     metricas_score = ['Razao_Variancia', 'BIC', 'Silhouette_Score', 'Indice_Jaccard']
         
-    # Colunas a normalizar, exceto a k
-    #colunas_para_normalizar = [col for col in df.columns if col != 'k']
+    # Colunas de metricas a serem normalizadas
     colunas_para_normalizar = [col for col in metricas_score]
     
     # Pipeline: normalização (MinMax | Scalling)

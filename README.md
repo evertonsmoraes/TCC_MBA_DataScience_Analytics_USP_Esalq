@@ -45,13 +45,13 @@ Antes da clusterização, foi realizada uma análise exploratória para compreen
 
 | Antes | Depois |
 |------|--------|
-| ![](imgs/histograma_variaveis.png) | ![](imgs/histograma_variaveis_normalizadas.png) |
+| ![](imgs/histograma_variaveis.png) | ![](imgs/histograma_variaveis_padronizadas.png) |
 
 ### 📦 Boxplot das variáveis (antes e depois da padronização)
 
 | Antes | Depois |
 |------|--------|
-| ![](imgs/bloxpot_variaveis.png) | ![](imgs/bloxpot_variaveis_normalizadas.png) |
+| ![](imgs/bloxpot_variaveis.png) | ![](imgs/bloxpot_variaveis_padronizadas.png) |
 
 ### 🔗 Correlação entre variáveis padronizadas (Pearson)
 <p align="center">
@@ -70,7 +70,7 @@ A definição do número ideal de clusters foi realizada a partir da combinaçã
 |:---------------:|:------------:|:------------:|
 | ![](imgs/geral_metricas_consolidadas.png) | ![](imgs/popul_metricas_consolidadas.png) | ![](imgs/educ_metricas_consolidadas.png) |
 | **Saúde** | **Economia** | **Infraestrutura** |
-| ![](imgs/saud_metricas_consolidadas.png) | ![](imgs/ecom_metricas_consolidadas.png) | ![](imgs/infra_metricas_consolidadas.png) |
+| ![](imgs/saud_metricas_consolidadas.png) | ![](imgs/econ_metricas_consolidadas.png) | ![](imgs/infra_metricas_consolidadas.png) |
 
 ## 📈 Resultados
 
@@ -82,7 +82,7 @@ A definição do número ideal de clusters foi realizada a partir da combinaçã
   - Apoio à formulação de políticas públicas  
 
 
-## 🔁 Reprodutibilidade
+## 🔁 Reprodução
 
 🔁 O projeto foi estruturado para permitir a reconstrução completa dos dados a partir do código.
 

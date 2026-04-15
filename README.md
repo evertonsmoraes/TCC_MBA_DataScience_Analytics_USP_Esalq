@@ -1,12 +1,11 @@
 # 📊 Clusterização de Municípios Brasileiros com Dados do IBGE
-[![Python](https://img.shields.io/badge/-Python-3776AB?logo=python&logoColor=white)](#)
-[![Pandas](https://img.shields.io/badge/-Pandas-150458?logo=pandas&logoColor=white)](#)
-[![NumPy](https://img.shields.io/badge/-NumPy-013243?logo=numpy&logoColor=white)](#)
-[![Scikit-learn](https://img.shields.io/badge/-Scikit--learn-F7931E?logo=scikitlearn&logoColor=white)](#)
-[![Matplotlib](https://img.shields.io/badge/-Matplotlib-11557C)](#)
-[![Seaborn](https://img.shields.io/badge/-Seaborn-4C72B0)](#)
-[![API IBGE](https://img.shields.io/badge/-API%20IBGE-005CA9)](#)
-
+[![Python](https://img.shields.io/badge/Python-404040?style=flat&logo=python&logoColor=3776AB)](#)
+[![Pandas](https://img.shields.io/badge/Pandas-404040?style=flat&logo=pandas&logoColor=150458)](#)
+[![NumPy](https://img.shields.io/badge/NumPy-404040?style=flat&logo=numpy&logoColor=013243)](#)
+[![Scikit-learn](https://img.shields.io/badge/Scikit--learn-404040?style=flat&logo=scikitlearn&logoColor=F7931E)](#)
+[![Matplotlib](https://img.shields.io/badge/Matplotlib-404040?style=flat&logoColor=11557C)](#)
+[![Seaborn](https://img.shields.io/badge/Seaborn-404040?style=flat&logoColor=4C72B0)](#)
+[![API IBGE](https://img.shields.io/badge/API%20IBGE-404040?style=flat&logoColor=005CA9)](#)
 
 **Autor:** <a href="https://linkedin.com/in/evertonsmoraes/" target="_blank">Everton S. Moraes</a></br>
 

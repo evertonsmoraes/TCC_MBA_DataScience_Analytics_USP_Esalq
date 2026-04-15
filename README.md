@@ -5,6 +5,7 @@
 [![Scikit-learn](https://img.shields.io/badge/-Scikit--learn-F7931E?logo=scikitlearn&logoColor=white)](#)
 [![Matplotlib](https://img.shields.io/badge/-Matplotlib-11557C)](#)
 [![Seaborn](https://img.shields.io/badge/-Seaborn-4C72B0)](#)
+[![API IBGE](https://img.shields.io/badge/-API%20IBGE-005CA9)](#)
 
 
 **Autor:** <a href="https://linkedin.com/in/evertonsmoraes/" target="_blank">Everton S. Moraes</a></br>

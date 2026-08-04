@@ -10,15 +10,17 @@
 **Autor:** <a href="https://linkedin.com/in/evertonsmoraes/" target="_blank">Everton S. Moraes</a></br>
 
 
-Projeto desenvolvido como Trabalho de Conclusão de Curso (TCC) no MBA em Data Science & Analytics (USP/ESALQ), com o objetivo de agrupar municípios brasileiros a partir de indicadores socioeconômicos públicos, utilizando técnicas de Machine Learning não supervisionado.
+Projeto desenvolvido como Trabalho de Conclusão de Curso (TCC) do **MBA em Data Science & Analytics (USP/ESALQ)**.
 
-🚀 A solução permite identificar perfis municipais semelhantes, apoiando análises comparativas (benchmarking) e contribuindo para a tomada de decisão na gestão pública.
+O estudo propõe uma metodologia para identificação de municípios brasileiros com perfis socioeconômicos semelhantes utilizando **Machine Learning não supervisionado**, permitindo apoiar iniciativas de **benchmarking na gestão pública**
 
+## 🚀 Sobre o Projeto
 
-## 🎯 Objetivo Geral
+O Brasil possui **5.570 municípios**, cada um apresentando características territoriais, econômicas, educacionais, sociais e demográficas distintas e identificar municípios realmente comparáveis representa um desafio importante para gestores públicos.
 
-Aplicar o algoritmo K-means para agrupar municípios brasileiros com base em indicadores socioeconômicos públicos, visando identificar perfis semelhantes que possam subsidiar práticas de benchmarking na gestão pública.
+Este trabalho propõe uma metodologia baseada em **clusterização utilizando o algoritmo K-Means**, permitindo agrupar municípios semelhantes a partir de indicadores públicos disponibilizados pelo IBGE.
 
+O principal diferencial do projeto consiste na utilização de **múltiplas métricas de validação combinadas em um score ponderado**, proporcionando uma escolha mais robusta do número ideal de clusters.
 
 
 ## 🎯 Objetivos Específicos
@@ -44,7 +46,8 @@ Aplicar o algoritmo K-means para agrupar municípios brasileiros com base em ind
 - Fonte: Instituto Brasileiro de Geografia e Estatística (IBGE)
 - Coleta via API pública
 - Abrangência: 5.570 municípios brasileiros
-- Total de indicadores utilizados: 38
+- Total de indicadores mapeados inicialmente: 74.164
+- Total de indicadores selecionados e utilizados: 38
 
 
 
@@ -52,16 +55,17 @@ Aplicar o algoritmo K-means para agrupar municípios brasileiros com base em ind
 O processo metodológico foi estruturado nas seguintes etapas:
 
 1. Extração dos dados via API do IBGE  
-2. Tratamento e estruturação das bases  
-3. Padronização das variáveis utilizando Z-score  
-4. Aplicação do algoritmo K-means por grupo de indicadores  
-5. Teste de múltiplos valores de k (100 a 500, com incremento de 5)  
-6. Avaliação da qualidade dos agrupamentos por métricas de validação  
-7. Construção de um score ponderado para definição do melhor k  
-8. Análise comparativa dos agrupamentos obtidos
+2. Tratamento dos dados
+3. Modelagem relacional
+4. Padronização das variáveis utilizando Z-score  
+5. Aplicação do algoritmo K-means por grupo de indicadores  
+6. Teste de múltiplos valores de k (100 a 500, com incremento de 5)  
+7. Avaliação da qualidade dos agrupamentos por métricas de validação  (VRC, Silhouette, Jaccard, BIC)
+8. Construção de um **Score Ponderado** para definição do melhor k  
+9. Análise comparativa dos agrupamentos obtidos
 
 
-## ## 📈 Exemplo Prático: Análise do Grupo "População"
+## 📈 Exemplo Prático: Análise do Grupo "População"
 
 ### Evolução das métricas ao longo de k
 ![Métricas por k](./imgs/popul_metricas_consolidadas.png)
@@ -85,10 +89,11 @@ Foram utilizadas múltiplas métricas para garantir uma avaliação robusta dos 
 📌 **Diferencial do projeto:** As métricas foram normalizadas e combinadas em um **score ponderado**, permitindo uma decisão mais consistente na escolha do número ótimo de clusters.
 
 
+
 ## 🔁 Reprodução
 O projeto foi estruturado para permitir a reconstrução completa dos dados a partir do código, garantindo reprodução dos resultados.
 
-### O pipeline contempla:
+## O pipeline contempla:
 
 1. Coleta automática via API  
 2. Tratamento e padronização dos dados  
@@ -96,18 +101,35 @@ O projeto foi estruturado para permitir a reconstrução completa dos dados a pa
 4. Geração de resultados e visualizações  
 
 
+
+## 📚 Arquivos Disponíveis
+
+O repositório contém:
+- 📄 Artigo completo do TCC (PDF): [[TCC] - Everton Da Silva Moraes.pdf](./[TCC]%20-%20Everton%20Da%20Silva%20Moraes.pdf)
+- 📊 Slides da apresentação: [[Slides] - Everton Da Silva Moraes.pdf](./%5BSlides%5D%20-%20Everton%20Da%20Silva%20Moraes.pdf)
+- 💻 Código-fonte completo
+- 📈 Gráficos utilizados na pesquisa
+- 📂 Arquivos de entrada
+- 📂 Resultados gerados automaticamente
+
+
+
 ## 📁 Estrutura do Projeto
 
 ```bash
 .
 Projeto_TCC/
-├── funcoes_tcc.py         # Biblioteca central do projeto, responsável por concentrar funções reutilizáveis.
-├── 00_discovery.py        # Script de análise exploratória (discovery) para a coleta, analise e definição dos indicadores a serem utilizados no projeto.
-├── 01_desenvolvimento.py  # Script com todas as etapads do projeto desde a coleta de dados aos resultados
+├── [TCC] - Everton Da Silva Moraes.pdf       # Artigo completo do Trabalho de Conclusão de Curso
+├── [Slides] - Everton Da Silva Moraes.pdf    # Slides de apresentaação utilizado na defesa o Trabalho de Conclusão de Curso
+├── .spyproject/                              # Diretório criado automaticamente pelo ambiente de desenvolvimento integrado (IDE) Spyder 
+├── README.md                                 # Documento de introdução e documentação a este projeto
+├── funcoes_tcc.py                            # Biblioteca central do projeto, responsável por concentrar funções reutilizáveis.
+├── 00_discovery.py                           # Script de análise exploratória (discovery) para a coleta, analise e definição dos indicadores a serem utilizados no projeto.
+├── 01_desenvolvimento.py                     # Script com todas as etapads do projeto desde a coleta de dados aos resultados
 ├── arquivos/                   
-│   ├── entrada/            # Arquivos de entrada (lista de municipios brasileiros, indicadores selecionados ,etc)
-│   ├── rotina/             # Arquivos gerados durante execução da(s) rotina(s)
-│   ├── saida/              # Arquivos de resultados e outputs gerados durante execução da(s) rotina(s)
-├── imgs/                   # Diretório com as imagens, gráficos, tabelas geradas durante as execuções da(s) rotina(s) 
-├── .spyproject/            # Diretório criado automaticamente pelo ambiente de desenvolvimento integrado (IDE) Spyder 
-├── README.md               # Documento de introdução e documentação a este projeto
+│   ├── entrada/                              # Arquivos de entrada (lista de municipios brasileiros, indicadores selecionados ,etc)
+│   ├── rotina/                               # Arquivos gerados durante execução da(s) rotina(s)
+│   ├── saida/                                # Arquivos de resultados e outputs gerados durante execução da(s) rotina(s)
+├── imgs/                                     # Diretório com as imagens, gráficos, tabelas geradas durante as execuções da(s) rotina(s) 
+
+```

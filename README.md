@@ -93,7 +93,7 @@ Foram utilizadas múltiplas métricas para garantir uma avaliação robusta dos 
 ## 🔁 Reprodução
 O projeto foi estruturado para permitir a reconstrução completa dos dados a partir do código, garantindo reprodução dos resultados.
 
-## O pipeline contempla:
+### O pipeline contempla:
 
 1. Coleta automática via API  
 2. Tratamento e padronização dos dados  
